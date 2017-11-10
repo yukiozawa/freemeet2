@@ -1,5 +1,6 @@
 <%= form_for current_user do |f| %>
   登録情報
+  <%= f.file_field :image %>
   ユーザーネーム
   <%= f.text_field :user_name, placeholder: "ユーザーネーム" %>
   自己紹介

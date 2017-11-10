@@ -1,5 +1,6 @@
 <%= link_to "プロフィール編集", edit_user_path %>
 
+<%= image_tag @user.image.url(:middle) %>
 <%= @user.user_name %>
 <%= @user.introduction %>
 <%= @user.gender %>

@@ -53,4 +53,5 @@ gem 'pry-rails'
   gem 'twitter-bootstrap-rails'
   gem 'bootstrap-material-design', '0.1.4'
   gem 'carrierwave'
+  gem "mini_magick"
 

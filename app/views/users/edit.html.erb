@@ -1,0 +1,18 @@
+<%= form_for current_user do |f| %>
+  登録情報
+  ユーザーネーム
+  <%= f.text_field :user_name, placeholder: "ユーザーネーム" %>
+  自己紹介
+  <%= f.text_area :introduction, placeholder: "自己紹介" %>
+  性別
+  <%= f.number_field :gender, placeholder: "性別" %>
+  地域
+  <%= f.text_field :area, placeholder: "地域" %>
+  趣味
+  <%= f.text_field :favorite, placeholder: "趣味" %>
+  職業
+  <%= f.text_field :work, placeholder: "職業" %>
+
+  <%= f.submit "編集完了" %>
+
+<% end %>

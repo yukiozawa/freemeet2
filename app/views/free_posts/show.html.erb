@@ -2,6 +2,7 @@
 <%= @free_post.place %></br>
 <%= @free_post.detail %></br>
 <%= @free_post.user.user_name %></br>
+<div id="map"></div>
 
 
 
@@ -24,3 +25,40 @@
       </div>
     <% end %>
   <% end %>
+
+
+<script>
+console.log(gon.lat_position_js, gon.lng_position_js);
+gon.lat_position_js = +gon.lat_position_js;
+gon.lng_position_js = +gon.lng_position_js;
+
+    function initMap() {
+        let pos = {
+          lat: gon.lat_position_js, 
+          lng: gon.lng_position_js};
+
+          console.log(pos);
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: pos,
+          zoom: 15
+        });
+
+        var infoWindow = new google.maps.InfoWindow({map: map});
+
+        //マーカーの初期設定
+        let marker = new google.maps.Marker({
+          position: pos,
+          map: map
+        });
+
+        
+      };
+      
+
+
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDUJ7YNNwefaUIeD3iBHnIz7ls91TN-l8&callback=initMap">
+    </script>

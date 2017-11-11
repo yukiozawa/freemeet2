@@ -10,6 +10,12 @@ class FreePostsController < ApplicationController
   def show
     @free_post = FreePost.find(params[:id])
     # binding.pry
+    lat_position = @free_post.lat_pos
+    lng_position = @free_post.lng_pos
+
+    gon.lat_position_js = lat_position
+    gon.lng_position_js = lng_position
+
     @comments = @free_post.comments
   end
 

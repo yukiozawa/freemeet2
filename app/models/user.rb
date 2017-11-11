@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   mount_uploader :image, ImageUploader
+
+  has_many :free_posts, ->{ order("created_at DESC") }
 end

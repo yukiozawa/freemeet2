@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110154644) do
+ActiveRecord::Schema.define(version: 20171110163208) do
+
+  create_table "free_posts", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.date     "free_time"
+    t.text     "detail",     limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false

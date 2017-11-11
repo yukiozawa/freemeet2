@@ -1,3 +1,26 @@
-<%= @free_post.free_time %></br>
+<%= @free_post.start_time %> ~ <%= @free_post.end_time %></br>
+<%= @free_post.place %></br>
 <%= @free_post.detail %></br>
 <%= @free_post.user.user_name %></br>
+
+
+
+<% if user_signed_in? %>
+    <div class="form-group">
+      <%= form_tag("/free_posts/#{@free_post.id}/comments", method: :post) do |comments| %>
+        <div class="line-break comment-field"><%= text_area_tag :text, "", rows: "4", maxlength: 200, required: true %></div>
+        <%= submit_tag "コメントを投稿", class: "btn btn-warning"%>
+      <% end %>
+    </div>
+  <% end %>
+
+
+ <% if @comments %>
+    <% @comments.each do |comment| %>
+      <div class="each-comment line-break">
+      <p><%= simple_format(comment.text) %></p>
+      <p class="gray-text comment-foot"><%= link_to comment.user.user_name, user_path(comment.user) %>
+      <%= comment.created_at %></p>
+      </div>
+    <% end %>
+  <% end %>

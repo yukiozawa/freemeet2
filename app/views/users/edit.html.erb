@@ -1,18 +1,18 @@
 <%= form_for current_user do |f| %>
   登録情報
-  <%= f.file_field :image %>
+  <%= f.file_field :image %></br>
   ユーザーネーム
-  <%= f.text_field :user_name, placeholder: "ユーザーネーム" %>
+  <%= f.text_field :user_name, placeholder: "ユーザーネーム" %></br>
   自己紹介
-  <%= f.text_area :introduction, placeholder: "自己紹介" %>
+  <%= f.text_area :introduction, placeholder: "自己紹介" %></br>
   性別
-  <%= f.number_field :gender, placeholder: "性別" %>
+  <%= f.number_field :gender, placeholder: "性別" %></br>
   地域
-  <%= f.text_field :area, placeholder: "地域" %>
+  <%= f.text_field :area, placeholder: "地域" %></br>
   趣味
-  <%= f.text_field :favorite, placeholder: "趣味" %>
+  <%= f.text_field :favorite, placeholder: "趣味" %></br>
   職業
-  <%= f.text_field :work, placeholder: "職業" %>
+  <%= f.text_field :work, placeholder: "職業" %></br>
 
   <%= f.submit "編集完了" %>
 

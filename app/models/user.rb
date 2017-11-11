@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   has_many :free_posts, ->{ order("created_at DESC") }
+  has_many :comments
 end

@@ -14,13 +14,14 @@ class FreePostsController < ApplicationController
   end
 
   def create
+
     @free_post = FreePost.create(create_params)
     redirect_to :root and return
   end
 
   private
   def create_params
-    params.require(:free_post).permit(:start_time, :end_time, :place, :detail).merge(user_id: current_user.id)
+    params.require(:free_post).permit(:start_time, :end_time, :place, :detail, :lat_pos, :lng_pos).merge(user_id: current_user.id)
     
   end
 end

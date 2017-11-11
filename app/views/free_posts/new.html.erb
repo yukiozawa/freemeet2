@@ -1,13 +1,104 @@
+<div id="map"></div>
+<!-- <ul>
+    <li>lat: <span id="lat"></span></li>
+    <li>lng: <span id="lng"></span></li>
+</ul>
+ -->
+
 <%= form_for(@free_post)  do |f| %>
+  lat: <%= f.text_field :lat_pos, value:"Mapをクリック", id: 'lat_field' %>
+  lng: <%= f.text_field :lng_pos, value:"Mapをクリック", id: 'lng_field' %></br>
+  <%= f.label :place, "場所" %></br>
+  <%= f.text_field :place %></br>
   <%= f.label :start_time, "フリータイム（開始）" %></br>
   <%= f.datetime_select :start_time %></br>
   <%= f.label :start_time, "フリータイム（終了）" %></br>
   <%= f.datetime_select :end_time %></br>
-  <%= f.label :place, "場所" %></br>
-  <%= f.text_field :place %></br>
+
   <%= f.label :detail, "詳細" %></br>
   <%= f.text_area :detail %></br>
+
 
   <%= f.submit "投稿" %>
 
 <% end %>
+
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 35.40, lng: 139.42},
+          zoom: 15
+        });
+        var infoWindow = new google.maps.InfoWindow({map: map});
+
+        // //マーカーの初期設定
+        // let marker = new google.maps.Marker({
+        //   position: (35.40, 139.42),
+        //   map: myMap
+        // })
+
+        let marker = "";
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            // infoWindow.setPosition(pos);
+            // infoWindow.setContent('Your Position.');
+            marker = new google.maps.Marker({
+              map : map,             // 対象の地図オブジェクト
+              position : pos   // 緯度・経度
+            });
+
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+
+
+        map.addListener('click', function(e) {
+        // marker.setMap(null);
+        marker.setMap(null);
+        marker = new google.maps.Marker({
+          position: e.latLng,
+          map: map
+          });
+        getClickLatLng(e.latLng, map);
+      });
+      }
+
+
+
+    function getClickLatLng(lat_lng, map) {
+
+      // 座標を表示
+      // document.getElementById('lat_field').textContent = lat_lng.lat();
+      // document.getElementById('lng').textContent = lat_lng.lng();
+      //座標をフォームに入れる
+      document.getElementById('lat_field').value = lat_lng.lat();
+      document.getElementById('lng_field').value= lat_lng.lng();
+      // マーカーを設置
+      // marker = new google.maps.Marker({
+      // position: lat_lng,
+      // map: map
+      // });
+
+      
+
+      // 座標の中心をずらす
+      // http://syncer.jp/google-maps-javascript-api-matome/map/method/panTo/
+      map.panTo(lat_lng);
+    }
+  </script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDUJ7YNNwefaUIeD3iBHnIz7ls91TN-l8&callback=initMap">
+    </script>

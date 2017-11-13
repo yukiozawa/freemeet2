@@ -57,3 +57,8 @@ gem 'pry-rails'
   gem 'gon'
   gem 'devise-bootstrap-views'
 
+
+group :production do
+  gem 'rails_12factor'
+end
+

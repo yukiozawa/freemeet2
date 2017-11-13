@@ -6,7 +6,7 @@
     </div>  
   </div>
 
-  <div class="col-xs-6 index-box">
+  <div class="col-xs-6 mypage-box">
     <dl>
       <dt>ユーザーネーム</dt>
       <dd><%= @user.user_name %></dd>
@@ -33,3 +33,9 @@
     </dl>
   </div>
 
+  <h4>>>@user.user_nameさんの投稿</h4>
+  <div>
+  <% @free_posts.each do |f| %>
+  <%= render partial: "free_posts/free_post_display", locals: {f: f} %>
+  <% end %>
+  </div>

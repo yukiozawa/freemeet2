@@ -38,7 +38,11 @@ body{
   vertical-align: middle;
 }
 
-footer div p{
+.footer-box{
+  margin: 50px, 0px;
+}
+
+.text-center{
   text-align: center;
 }
 
@@ -59,4 +63,12 @@ footer div p{
 .comment-field{
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+.mypage-box{
+    padding: 0.5em 1em;
+    margin: 0.2em 0;
+    background-color: #FBFBEF ;
+    border: double 5px gray;/*線*/
+    border-radius: 5px;/*角の丸み*/
 }

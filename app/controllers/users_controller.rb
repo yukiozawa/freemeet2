@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @free_posts = FreePost.where(user_id: params[:id]).order("created_at DESC")
   end
 
   def edit

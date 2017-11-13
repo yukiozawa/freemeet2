@@ -3,7 +3,9 @@
 <div class="index-box">
   <dl>
     <dt>フリータイム</dt>
-    <dd><%= @free_post.start_time %> ~ <%= @free_post.end_time %></dd>
+    <% start_time = @free_post.start_time.to_s.gsub(":00 +0900", "") %>
+    <% end_time = @free_post.end_time.to_s.gsub(":00 +0900", "") %>
+    <dd><%= start_time %> ~ <%= end_time %></dd>
   </dl>
   <dl>
     <dt>場所</dt>
@@ -43,7 +45,7 @@
   <% end %>
 
 <script>
-console.log(gon.lat_position_js, gon.lng_position_js);
+
 gon.lat_position_js = +gon.lat_position_js;
 gon.lng_position_js = +gon.lng_position_js;
 
@@ -52,7 +54,6 @@ gon.lng_position_js = +gon.lng_position_js;
           lat: gon.lat_position_js, 
           lng: gon.lng_position_js};
 
-          console.log(pos);
 
         var map = new google.maps.Map(document.getElementById('map'), {
           center: pos,

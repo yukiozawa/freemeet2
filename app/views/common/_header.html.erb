@@ -1,20 +1,31 @@
-<div>
-  <%= link_to "Free Meet!", root_path %>
+<div class="navbar">
+
+<div class="navbar-header">
+  <%= link_to image_tag("LogoFactory.jpg", {height:100}), root_path %>  
 </div>
 
+
+
 <% if user_signed_in? %>
-  <%= link_to "マイページ", user_path(current_user), method: :get %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  <ul class="nav navbar-nav navbar-right tb-center">
+    <li><%= link_to "マイページ", user_path(current_user), method: :get %></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+  </ul>
+ 
 <% end %>
 
 <% unless user_signed_in? %>
-  <%= link_to "ログイン", "/users/sign_in" %>
-  <%= link_to "ユーザー登録", new_user_registration_path, method: :get %>
+  <ul class="nav navbar-nav navbar-right tb-center"> 
+    <li><%= link_to "ログイン", "/users/sign_in" %></li>
+    <li><%= link_to "ユーザー登録", new_user_registration_path, method: :get %></li>
+  </div>
+
 <% end %>
+
+</div>
 
 
 <div>
-  <%= link_to "フリータイムを投稿", new_free_post_path, method: :get %>
+  <i class="fa fa-list-alt" aria-hidden="true"></i><%= link_to "フリータイム一覧", free_posts_path %>
+  <i class="fa fa-pencil" aria-hidden="true"></i><%= link_to "フリータイムを投稿", new_free_post_path, method: :get %>
 </div>
-
-<%= link_to "フリータイム一覧", free_posts_path %>

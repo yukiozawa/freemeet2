@@ -1,19 +1,31 @@
 <%= form_for current_user do |f| %>
-  登録情報
+  <p>登録情報</p>
+  <%= image_tag current_user.image.url(:middle), class: "img-responsive img-circle" if current_user.image? %>
   <%= f.file_field :image %></br>
-  ユーザーネーム
-  <%= f.text_field :user_name, placeholder: "ユーザーネーム" %></br>
-  自己紹介
-  <%= f.text_area :introduction, placeholder: "自己紹介" %></br>
-  性別
-  <%= f.number_field :gender, placeholder: "性別" %></br>
-  地域
-  <%= f.text_field :area, placeholder: "地域" %></br>
-  趣味
-  <%= f.text_field :favorite, placeholder: "趣味" %></br>
-  職業
-  <%= f.text_field :work, placeholder: "職業" %></br>
-
-  <%= f.submit "編集完了" %>
+  <dl>
+    <dt>ユーザーネーム</dt>
+    <dd><%= f.text_field :user_name, placeholder: "ユーザーネーム", class: "form-control" %></dd>
+  </dl>
+  <dl>
+    <dt>自己紹介</dt>
+    <dd><%= f.text_area :introduction, placeholder: "自己紹介", class: "form-control" %></dd>
+  </dl>
+  <dl>
+    <dt>性別</dt>
+    <dd><%= f.text_field :gender, placeholder: "性別", class: "form-control" %></dd>
+  </dl>
+  <dl>
+    <dt>地域</dt>
+    <dd><%= f.text_field :area, placeholder: "地域", class: "form-control" %></dd>
+  </dl>
+  <dl>
+    <dt>趣味</dt>
+    <dd><%= f.text_field :favorite, placeholder: "趣味", class: "form-control" %></dd>
+  </dl>
+  <dl>
+    <dt>職業</dt>
+    <dd><%= f.text_field :work, placeholder: "職業", class: "form-control" %></dd>
+  </dl>
+  <%= f.submit "編集完了" , class: "btn btn-success"%>
 
 <% end %>

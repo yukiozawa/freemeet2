@@ -1,16 +1,32 @@
-<%= @free_post.start_time %> ~ <%= @free_post.end_time %></br>
-<%= @free_post.place %></br>
-<%= @free_post.detail %></br>
-<%= @free_post.user.user_name %></br>
 <div id="map"></div>
 
-
+<div class="index-box">
+  <dl>
+    <dt>フリータイム</dt>
+    <dd><%= @free_post.start_time %> ~ <%= @free_post.end_time %></dd>
+  </dl>
+  <dl>
+    <dt>場所</dt>
+    <dl><%= @free_post.place %></dl>
+  </dl>
+  <dl>
+    <dt>詳細</dt>
+    <dd><%= @free_post.detail %></dd>   
+  </dl>
+ 
+  <dl>
+    <dt>開催者</dt>
+    <dd> <%= link_to image_tag(@free_post.user.image.url(:thumb), class: "img-circle"), user_path(@free_post.user) %></dd>
+    <dd><%= @free_post.user.user_name %></dd>   
+  </dl>
+  
+</div>
 
 <% if user_signed_in? %>
     <div class="form-group">
       <%= form_tag("/free_posts/#{@free_post.id}/comments", method: :post) do |comments| %>
-        <div class="line-break comment-field"><%= text_area_tag :text, "", rows: "4", maxlength: 200, required: true %></div>
-        <%= submit_tag "コメントを投稿", class: "btn btn-warning"%>
+        <div class="line-break comment-field"><%= text_area_tag :text, "", rows: "4", maxlength: 200, required: true, class: "form-control" %></div>
+        <%= submit_tag "コメントを投稿", class: "btn btn-success"%>
       <% end %>
     </div>
   <% end %>
@@ -25,7 +41,6 @@
       </div>
     <% end %>
   <% end %>
-
 
 <script>
 console.log(gon.lat_position_js, gon.lng_position_js);

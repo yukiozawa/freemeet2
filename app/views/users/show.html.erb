@@ -1,9 +1,35 @@
-<%= link_to "プロフィール編集", edit_user_path %></br>
 
-<%= image_tag @user.image.url(:middle) %></br>
-<%= @user.user_name %></br>
-<%= @user.introduction %></br>
-<%= @user.gender %></br>
-<%= @user.area %></br>
-<%= @user.favorite %></br>
-<%= @user.work %></br>
+  <div class="col-xs-6">
+    <i class="fa fa-address-book" aria-hidden="true"></i><%= link_to "プロフィール編集", edit_user_path%></br>
+    <div>
+      <%= image_tag @user.image.url(:middle), class: "img-circle img-center" %>
+    </div>  
+  </div>
+
+  <div class="col-xs-6 index-box">
+    <dl>
+      <dt>ユーザーネーム</dt>
+      <dd><%= @user.user_name %></dd>
+    </dl>
+    <dl>
+      <dt>自己紹介</dt>
+      <dd><%= @user.introduction %></dd>
+    </dl>
+    <dl>
+      <dt>性別</dt>
+      <dd><%= @user.gender %></dd>
+    </dl>
+    <dl>
+      <dt>地域</dt>
+      <dd><%= @user.area %></dd>
+    </dl>
+    <dl>
+      <dt>趣味</dt>
+      <dd><%= @user.favorite %></dd>
+    </dl>
+    <dl>
+      <dt>職業</dt>
+      <dd><%= @user.work %></dd>
+    </dl>
+  </div>
+

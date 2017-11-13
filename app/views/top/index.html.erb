@@ -1,4 +1,4 @@
-<div id="map"></div>
+<div id="map-top"></div>
 
 <script>
       // Note: This example requires that you consent to location sharing when
@@ -6,9 +6,17 @@
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
 
+      let lat_pos_i = 0;
+      let lng_pos_i = 0;
+      let free_name = "";
+      let free_start = "";
+      let free_end = "";
+      let free_place = "";
+
+
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 35.40, lng: 139.42},
+        var map = new google.maps.Map(document.getElementById('map-top'), {
+          center: {lat: 35.667529, lng: 139.713815},
           zoom: 15
         });
         var infoWindow = new google.maps.InfoWindow({map: map});
@@ -22,7 +30,7 @@
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Your Position.');
+            infoWindow.setContent('現在地');
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -30,6 +38,46 @@
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+        for(let i=0; i<gon.free_posts_js.length; i++){
+          lat_pos_i = +gon.free_posts_js[i].lat_pos;
+          lng_pos_i = +gon.free_posts_js[i].lng_pos;
+          free_place = gon.free_posts_js[i].place;
+          free_start_g = gon.free_posts_js[i].start_time;
+          free_start_gr = free_start_g.replace(":00.000+09:00","");
+          free_start = free_start_gr.replace("T", "-")
+          free_end_g = gon.free_posts_js[i].end_time;
+          free_end_gr = free_end_g.replace(":00.000+09:00","");
+          free_end = free_end_gr.replace("T", "-");
+          free_detail = gon.free_posts_js[i].detail;
+          free_post_id = +gon.free_posts_js[i].id;
+
+          console.log(free_start);
+
+          db_info = `${free_place}<br>${free_start}~${free_end}<br>${free_detail}<br><a href="/free_posts/${free_post_id}">個別ページ</a>`;
+
+          db_pos = {
+                lat: lat_pos_i,
+                lng: lng_pos_i
+              };
+
+          let marker = new google.maps.Marker({
+              map : map,             // 対象の地図オブジェクト
+              position : db_pos   // 緯度・経度
+          });
+
+          let infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+                content: 
+                  db_info
+                   // 吹き出しに表示する内容
+            });
+
+          marker.addListener('click', function() { // マーカーをクリックしたとき
+            infoWindow.open(map, marker); // 吹き出しの表示
+          });
+
+
         }
       }
 

@@ -55,4 +55,5 @@ gem 'pry-rails'
   gem 'carrierwave'
   gem "mini_magick"
   gem 'gon'
+  gem 'devise-bootstrap-views'
 

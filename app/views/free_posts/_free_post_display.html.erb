@@ -1,6 +1,14 @@
-<%= f.start_time %> ~ <%= f.end_time %></br>
-<%= f.place %></br>
-<%= f.detail %></br>
-<%= f.user.user_name %></br>
-<%= link_to '詳細', free_post_path(f.id), method: :get %></br>
---------------------------------------</br>
+<div class="col-xs-6 index-box">
+  <div class="col-xs-3">
+    <%= link_to image_tag(f.user.image.url(:thumb), class: "img-circle"), user_path(f.user) %>
+  </div>
+  <div class="col-xs-9">
+    <%= f.start_time %> ~ <%= f.end_time %></br>
+    <%= f.place %></br>
+    <%= f.detail %></br>
+    <%= f.user.user_name %></br>
+  
+    <%= link_to '詳細', free_post_path(f.id), method: :get %>
+  </div>
+</div>
+

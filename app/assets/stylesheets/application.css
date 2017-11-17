@@ -58,6 +58,8 @@ body{
     background-color: #F2FBEF;
     border: solid 1px gray;/*線*/
     border-radius: 10px;/*角の丸み*/
+    height: 160px;
+    overflow: hidden;
 }
 
 .comment-field{

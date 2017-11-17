@@ -13,7 +13,7 @@
   </dl>
   <dl>
     <dt>詳細</dt>
-    <dd><%= @free_post.detail %></dd>   
+    <dd><%= simple_format(@free_post.detail) %></dd>   
   </dl>
  
   <dl>
@@ -21,6 +21,11 @@
     <dd> <%= link_to image_tag(@free_post.user.image.url(:thumb), class: "img-circle"), user_path(@free_post.user) %></dd>
     <dd><%= @free_post.user.user_name %></dd>   
   </dl>
+
+  <ul class="list-unstyled list-inline">
+    <li><%= link_to '編集', edit_free_post_path(@free_post.id), method: :get %></li>
+    <li><%= link_to '削除', free_post_path(@free_post.id), method: :delete, id: "delete-btn" %></li>
+  </ul>
   
 </div>
 
@@ -72,9 +77,22 @@ gon.lng_position_js = +gon.lng_position_js;
       };
       
 
-
 </script>
+
+
+<script>
+  $("#delete-btn").on("click", function(){
+    if(!confirm('本当に削除しますか？')){
+        /* キャンセルの時の処理 */
+        return false;
+    }else{
+        /*　OKの時の処理 */
+        location.href = 'index.html';
+    }
+  })
+</script>
+
 
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDUJ7YNNwefaUIeD3iBHnIz7ls91TN-l8&callback=initMap">
-    </script>
+</script>

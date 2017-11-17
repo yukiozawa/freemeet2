@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "top#index"
 
   resources :users, only: [:show, :edit, :update]
-  resources :free_posts, only: [:show, :edit, :update, :new, :create, :index]  do
+  resources :free_posts, only: [:show, :edit, :update, :new, :create, :index, :destroy]  do
     resources :comments, only: [:create]
   end  
 

@@ -11,7 +11,12 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(update_params)
-    redirect_to user_path
+    if current_user.save
+      redirect_to user_path(current_user.id), notice: 'Succeeded Your User Data Update'
+    else
+      redirect_to user_path(current_user.id), alert: 'Missed Your User Data Update'
+    end
+    
   end
 
 
@@ -20,5 +25,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:user_name, :introduction, :gender, :area, :favorite, :work, :image)
   end
 end
-
-

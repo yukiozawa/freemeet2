@@ -45,7 +45,7 @@ group :development do
   gem 'spring'
 end
 
-gem 'pry-rails'
+  gem 'pry-rails'
   gem 'devise'
   gem 'paperclip'
   gem 'kaminari'
@@ -56,7 +56,7 @@ gem 'pry-rails'
   gem "mini_magick"
   gem 'gon'
   gem 'devise-bootstrap-views'
-
+  gem 'acts_as_follower'
 
 group :production do
   gem 'rails_12factor'

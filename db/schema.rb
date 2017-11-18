@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113083529) do
+ActiveRecord::Schema.define(version: 20171118083851) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20171113083529) do
     t.string   "lat_pos",    limit: 255,   null: false
     t.string   "lng_pos",    limit: 255,   null: false
   end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id",  limit: 4
+    t.integer  "following_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "relationships", ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+  add_index "relationships", ["following_id"], name: "index_relationships_on_following_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false

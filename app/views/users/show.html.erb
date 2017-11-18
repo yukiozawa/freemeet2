@@ -4,6 +4,10 @@
     <div>
       <%= image_tag @user.image.url(:middle), class: "img-circle img-center" %>
     </div>  
+    <div class="text-center">
+      <%= render 'stats' %>
+      <%= render 'follow_form' %>
+    </div>
   </div>
 
   <div class="col-xs-6 mypage-box">
@@ -33,9 +37,10 @@
     </dl>
   </div>
 
-  <h4>>>@user.user_nameさんの投稿</h4>
+  <h4>>><%= @user.user_name %>さんの投稿</h4>
   <div>
   <% @free_posts.each do |f| %>
   <%= render partial: "free_posts/free_post_display", locals: {f: f} %>
   <% end %>
   </div>
+

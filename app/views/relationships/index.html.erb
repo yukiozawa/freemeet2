@@ -1,5 +1,10 @@
 <div id="map-top"></div>
 
+<% @follow_posts.each do |f| %>
+  <%= render partial: "free_posts/free_post_display", locals: {f: f} %>
+<% end %>
+
+
 <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -53,6 +58,7 @@
           free_detail = gon.free_posts_js[i].detail;
           free_post_id = +gon.free_posts_js[i].id;
 
+          // console.log(free_start);
 
           db_info = `${free_place}<br>${free_start}~${free_end}<br>${free_detail}<br><a href="/free_posts/${free_post_id}">個別ページ</a>`;
 

@@ -4,7 +4,7 @@ class TopController < ApplicationController
     now_time = Time.zone.now
 
     start_date = Time.zone.now
-    end_date = start_date + 604800
+    end_date = start_date + 259200
     
     @free_posts = FreePost.where(end_time: start_date..end_date)
 

@@ -5,8 +5,12 @@
       <%= image_tag @user.image.url(:middle), class: "img-circle img-center" %>
     </div>  
     <div class="text-center">
-      <%= render 'stats' %>
-      <%= render 'follow_form' %>
+      <div id="stats-count">
+        <%= render 'stats' %>
+      </div>
+      <div id="follow_form<%= @user.id %>">
+        <%= render 'follow_form' %>
+      </div>
     </div>
   </div>
 

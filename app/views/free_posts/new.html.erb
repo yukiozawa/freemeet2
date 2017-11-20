@@ -8,8 +8,8 @@
   <%= form_for(@free_post)  do |f| %>
     <div class="form-group">
       <%= f.label :lat, "緯度: " %>
-      <%= f.text_field :lat_pos, value:"Mapをクリック", id: 'lat_field', class: "form-inline" %>
-      <%= f.label :lng, "経度: " %><%= f.text_field :lng_pos, value:"Mapをクリック", id: 'lng_field', class: "form-inline" %>
+      <%= f.number_field :lat_pos, value:"Mapをクリック", id: 'lat_field', class: "form-inline" %>
+      <%= f.label :lng, "経度: " %><%= f.number_field :lng_pos, value:"Mapをクリック", id: 'lng_field', class: "form-inline" %>
     </div>
     <div>
       <dl>

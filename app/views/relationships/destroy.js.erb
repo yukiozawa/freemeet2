@@ -1,0 +1,5 @@
+//フォロー、アンフォロー切り替え
+$("#follow_form<%= @user.id %>").html("<%= j render 'users/follow' %>");
+
+$("#stats-count").html("<%= j render 'users/stats' %>");
+

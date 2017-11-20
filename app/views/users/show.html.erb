@@ -8,9 +8,11 @@
       <div id="stats-count">
         <%= render 'stats' %>
       </div>
+      <% if user_signed_in? %>
       <div id="follow_form<%= @user.id %>">
         <%= render 'follow_form' %>
       </div>
+      <% end %>
     </div>
   </div>
 

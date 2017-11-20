@@ -1,8 +1,9 @@
 <% @user.followers.each do |user| %>
-<table>
+<table class="follow-table">
 <tr>
-  <td><%= user.user_name %></td>
-  <td><%= link_to '詳細', user_path(user) %></td>
+  <td class="col-xs-4"><%= link_to image_tag(user.image.url(:thumb), class: "img-circle"), user_path(user) %></td>
+  <td class="col-xs-4"><%= user.user_name %></td>
+  <td class="col-xs-4"><%= link_to '詳細', user_path(user) %></td>
 </tr>
 
 </table>

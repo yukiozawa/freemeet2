@@ -57,6 +57,9 @@ end
   gem 'gon'
   gem 'devise-bootstrap-views'
   gem 'acts_as_follower'
+  gem 'react-rails'
+  gem 'delayed_job_active_record'
+  gem 'daemons'
 
 group :production do
   gem 'rails_12factor'

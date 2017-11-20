@@ -83,7 +83,20 @@ body{
     border-radius: 5px;/*角の丸み*/
 }
 
-.following{
+#following{
   text-align: center;
   font-size: 16px;
+}
+
+.follow-table{
+  border-bottom: solid 1px gray;
+  border-top: solid 1px gray;
+}
+
+#stats-count {
+  font-size: 24px;
+}
+
+#share{
+  text-align: right;
 }

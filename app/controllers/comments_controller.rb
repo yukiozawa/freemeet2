@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
     @comment = Comment.create(text: comment_params[:text],free_post_id: comment_params[:free_post_id], user_id: current_user.id)
 
     if @comment.save
-      binding.pry
       @free_post = FreePost.find(params[:free_post_id]) 
       @user = FreePost.find(params[:free_post_id]).user.user_name
       @email = FreePost.find(params[:free_post_id]).user.email

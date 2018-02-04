@@ -1,6 +1,8 @@
 
   <div class="col-xs-6">
+    <% if @user.id == current_user.id %>
     <i class="fa fa-address-book" aria-hidden="true"></i><%= link_to "プロフィール編集", edit_user_path%></br>
+    <% end %>
     <div>
       <%= image_tag @user.image.url(:middle), class: "img-circle img-center" %>
     </div>  

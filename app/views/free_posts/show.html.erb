@@ -22,11 +22,14 @@
     <dd><%= @free_post.user.user_name %></dd>   
   </dl>
 
-  <% if @free_post.user.id == current_user.id %>
-  <ul class="list-unstyled list-inline">
-    <li><%= link_to '編集', edit_free_post_path(@free_post.id), method: :get %></li>
-    <li><%= link_to '削除', free_post_path(@free_post.id), method: :delete, id: "delete-btn" %></li>
-  </ul>
+
+  <% if user_signed_in? %>
+    <% if @free_post.user.id == current_user.id %>
+      <ul class="list-unstyled list-inline">
+        <li><%= link_to '編集', edit_free_post_path(@free_post.id), method: :get %></li>
+        <li><%= link_to '削除', free_post_path(@free_post.id), method: :delete, id: "delete-btn" %></li>
+      </ul>
+    <% end %>
   <% end %>
   
 </div>

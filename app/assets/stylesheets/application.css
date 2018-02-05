@@ -100,3 +100,9 @@ body{
 #share{
   text-align: right;
 }
+
+.index-detail{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
